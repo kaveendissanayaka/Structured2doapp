@@ -6,13 +6,16 @@
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true"
+    android:backgroundTint="@color/white"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:id="@+id/linearlayout"
+        >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,6 +30,8 @@
             android:layout_width="30dp"
             android:layout_height="25dp"
             android:layout_marginTop="0dp"
+            android:backgroundTint="@color/black"
+
             />
         
         <TextView
@@ -34,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Title"
-            android:textColor="@color/orange"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:textSize="18dp"
             android:textStyle="bold"
@@ -44,24 +49,37 @@
         <ImageButton
             android:id="@+id/updatebtn"
             android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="30dp"
+            android:layout_height="28dp"
             android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
             android:backgroundTint="@color/white"
             android:src="@drawable/edit"
+
             />
 
         <ImageButton
             android:id="@+id/deletebtn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="25dp"
+            android:layout_height="28dp"
             android:layout_alignParentEnd="true"
+            android:layout_toLeftOf="@+id/updatebtn"
             android:backgroundTint="@color/white"
             android:src="@drawable/delete"
-            android:layout_toLeftOf="@+id/updatebtn"
+
             />
 
     </RelativeLayout>
+
+        <TextView
+            android:id="@+id/deadlinetextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="3"
+            android:layout_marginStart="30dp"
+            android:textColor="@color/red"
+            android:text="deadline" />
 
         <TextView
             android:id="@+id/contenttextview"
@@ -71,6 +89,7 @@
             android:fontFamily="@font/poppins_medium"
             android:maxLines="3"
             android:layout_marginStart="30dp"
+            android:textColor="@color/blue"
             android:text="content" />
 
     </LinearLayout>

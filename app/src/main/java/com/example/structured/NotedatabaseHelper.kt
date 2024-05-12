@@ -8,16 +8,18 @@ class NotedatabaseHelper(context:Context) :SQLiteOpenHelper(context,DATABASE_NAM
 
 
     companion object{
-        private const val DATABASE_NAME = "Structured1.db"
+        private const val DATABASE_NAME = "Structured4.db"
         private const val DATABASE_VERSION = 1
         private const val TABLE_NAME = "allnotes"
         private const val COLUMN_ID = "id"
         private const val COLUMN_TITLE = "title"
         private const val COLUMN_CONTENT = "content"
+        private const val COLUMN_DEADLINE = "deadline" // Add deadline column
+
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val createTableQuery = "CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY,$COLUMN_TITLE TEXT,$COLUMN_CONTENT TEXT)"
+        val createTableQuery = "CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY,$COLUMN_TITLE TEXT,$COLUMN_CONTENT TEXT, $COLUMN_DEADLINE INTEGER)"
         db?.execSQL(createTableQuery)
     }
 
@@ -32,6 +34,7 @@ class NotedatabaseHelper(context:Context) :SQLiteOpenHelper(context,DATABASE_NAM
         val values = ContentValues().apply{
             put(COLUMN_CONTENT,note.content)
             put(COLUMN_TITLE,note.title)
+            put(COLUMN_DEADLINE, note.deadline)
         }
         db.insert(TABLE_NAME,null,values)
         db.close()
@@ -47,8 +50,9 @@ class NotedatabaseHelper(context:Context) :SQLiteOpenHelper(context,DATABASE_NAM
             val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
             val title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
             val content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
+            val deadline = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_DEADLINE))
 
-            val note = Note(id,title,content)
+            val note = Note(id,title,content,deadline)
             notelist.add(note)
         }
         cursor.close()
@@ -61,6 +65,7 @@ class NotedatabaseHelper(context:Context) :SQLiteOpenHelper(context,DATABASE_NAM
         val values = ContentValues().apply {
             put(COLUMN_CONTENT,note.content)
             put(COLUMN_TITLE,note.title)
+            put(COLUMN_DEADLINE,note.deadline)
         }
         val whereClause = "$COLUMN_ID = ?"
         val whereArgs = arrayOf(note.id.toString())
@@ -78,10 +83,11 @@ class NotedatabaseHelper(context:Context) :SQLiteOpenHelper(context,DATABASE_NAM
         val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
         val title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
         val content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
+        val deadline = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_DEADLINE))
 
         cursor.close()
         db.close()
-        return Note(id,title,content)
+        return Note(id,title,content,deadline)
     }
 
     fun deleteNote(noteId: Int){

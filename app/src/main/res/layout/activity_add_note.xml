@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+    android:backgroundTint="#000000"
+    android:foregroundTint="#FFFFFF"
     tools:context=".AddNoteActivity">
 
     <TextView
@@ -27,37 +30,76 @@
         android:layout_height="38dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/black"
         android:src="@drawable/baseline_check_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
 
     <EditText
         android:id="@+id/notetitle"
         android:layout_width="363dp"
         android:layout_height="55dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="56dp"
         android:background="@drawable/orange_border"
         android:fontFamily="@font/poppins_medium"
         android:hint="Enter Title here"
         android:maxLines="1"
         android:padding="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
+
     <EditText
         android:id="@+id/description"
-        android:layout_width="363dp"
-        android:layout_height="650dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="354dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/orange_border"
         android:fontFamily="@font/poppins_medium"
+        android:gravity="top"
         android:hint="Enter Description"
         android:padding="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notetitle"
-        android:gravity="top"/>
+        app:layout_constraintTop_toBottomOf="@+id/notetitle" />
+
+    <DatePicker
+        android:id="@+id/deadlineDatePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:calendarTextColor="@color/white"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:foregroundTint="#FDFDFD"
+        android:yearListSelectorColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description" />
+
+    <Button
+        android:id="@+id/backbtn"
+        android:layout_width="137dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="56dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="BACK"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

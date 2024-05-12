@@ -1,3 +1,11 @@
 package com.example.structured
 
-data class Note(val id:Int,val title:String,val content:String)
+
+import java.util.*
+
+data class Note(
+    val id: Int,
+    val title: String,
+    val content: String,
+    val deadline: Long
+)
